@@ -14,6 +14,14 @@ The hardest, but most creative and rewarding, part is to set up [regular express
 
 With the OSM data file and configuration set up, serve the directory as static content by a Web server and point your Web browser to `index.html`. After several seconds, depending on the amount of data to be processed, the map appears. It has panning and zooming capabilities.
 
+After configuring the OSM file to `data-clipped-highways.osm`, the project can be built, run and stopped like this:
+
+```sh
+docker build -t csm .
+docker run -d --rm --name csm -p 80:80 csm
+docker stop csm
+```
+
 ## Obtaining OSM Data
 First, OSM data has to be obtained for your desired region. Get it via the [OSM API](https://wiki.openstreetmap.org/wiki/API_v0.6#API_calls) with a bounding box specified. An example API call with a bounding box set within Dresden would be:
 
