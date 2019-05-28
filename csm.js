@@ -13,12 +13,12 @@ class ColorfulStreetsMap {
      * Defines HTML colors for regular expression in a map and sets up the geographical map.
      *
      * @param {string} renderTarget - target HTML element id to render the map to
-     * @param {number} latitude - latitude to center the map to
      * @param {number} longitude - longitude to center the map to
+     * @param {number} latitude - latitude to center the map to
      * @param {number} zoom - zoom level
      * @see {@link https://openlayers.org/en/latest/apidoc/module-ol_Map-Map.html}
      */
-    constructor(renderTarget, latitude, longitude, zoom) {
+    constructor(renderTarget, longitude, latitude, zoom) {
         const c = new Map();
         c.set(/er? Straße$/, "#84a883");
         c.set(/er Platz$/, "#4aa03a");
@@ -46,7 +46,7 @@ class ColorfulStreetsMap {
             target: renderTarget, // assign map to HTML element
             controls: [], // prevent adding controls
             view: new ol.View({
-                center: ol.proj.transform([latitude, longitude], "EPSG:4326", "EPSG:3857"),
+                center: ol.proj.transform([longitude, latitude], "EPSG:4326", "EPSG:3857"),
                 zoom: zoom
             })
         });
